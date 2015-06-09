@@ -66,7 +66,7 @@ if file_path && File.size?(file_path)
         robot_movements = instructions.gets
 
         # check instructions are not too long
-        if instructions.size > 100
+        if robot_movements.size > 100
           puts "Too many instructions to compute robot journey"
         else
           traverse_mars start_coords_direction.chomp.split(' '), robot_movements.chomp.split(//), robot_move_controller

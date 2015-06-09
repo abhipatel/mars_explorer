@@ -27,6 +27,7 @@ def traverse_mars start_coords_direction, robot_movements, robot_move_controller
   current_location = [start_coords_direction[0].to_i, start_coords_direction[1].to_i]
   current_direction = start_coords_direction[2]
   robot_lost = false
+  
   robot_movements.each do |movement|
     new_location_direction = robot_move_controller.interpret_move current_location, current_direction, movement
     if is_invalid_move new_location_direction[0..1]
@@ -41,9 +42,11 @@ def traverse_mars start_coords_direction, robot_movements, robot_move_controller
     end
   end
 
+  # print final location if robot is not lost
   puts "#{current_location.join(' ')} #{current_direction}" unless robot_lost
 end
 
+# check file exists and is not blank
 if file_path && File.size?(file_path)
   instructions = File.open file_path
 
@@ -61,6 +64,8 @@ if file_path && File.size?(file_path)
     while start_coords_direction = instructions.gets do
       unless start_coords_direction.chomp.empty?
         robot_movements = instructions.gets
+
+        # check instructions are not too long
         if instructions.size > 100
           puts "Too many instructions to compute robot journey"
         else

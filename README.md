@@ -6,6 +6,3 @@ Example command:
 ruby explorer.rb "earth_instructions.txt"
 
 __This is a work in progress project, there are no tests and the code needs to be cleaned up__
-
-- `Testing command`
--- Details
